@@ -1,6 +1,8 @@
 #ifndef MARPHILIB_H_
 #define MARPHILIB_H_
 
+// Marphi-lib är våra egna grejer som är mycket bättre än Roberts skräp. :-)
+
 //---------------------------------------------------------
 // TYPES
 //---------------------------------------------------------

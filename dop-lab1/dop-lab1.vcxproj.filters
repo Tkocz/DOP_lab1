@@ -15,8 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\uppgift_2.c">
+    <ClCompile Include="source\uppgift_3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\GraphicsLib2010.lib" />
+    <Library Include="lib\MazeLib2012.lib" />
+    <Library Include="lib\PCLibs2012.lib" />
   </ItemGroup>
 </Project>

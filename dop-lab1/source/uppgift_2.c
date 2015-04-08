@@ -15,7 +15,11 @@ typedef enum { FALSE, TRUE } Bool;//------------------------------------------
 //---------------------------------------------------------
 main() {
     // Tyngderna vi ska prova med.
-    int weights[]   = { 1, 15, 20 };
+	int weights[10];
+	for (int i = 0; i < 10; i++){
+		weights[i] = GetIntFromUser();
+		if (weights[i] <= 0) break;
+	}
 
     // Antalet tyngder.
     int num_weights = sizeof(weights) / sizeof(int);

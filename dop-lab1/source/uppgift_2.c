@@ -10,19 +10,27 @@
 // TYPES
 //---------------------------------------------------------
 
-typedef enum { FALSE, TRUE } Bool;//---------------------------------------------------------
+typedef enum { FALSE, TRUE } Bool;
+
+//---------------------------------------------------------
 // FUNCTIONS
-//---------------------------------------------------------
+//---------------------------------------------------------
+
 main() {
     // Tyngderna vi ska prova med.
-	int weights[10];
+    int weights[10] = { 0 };
+    int num_weights;
+
+
 	for (int i = 0; i < 10; i++){
 		weights[i] = GetIntFromUser();
-		if (weights[i] <= 0) break;
+        if (weights[i] <= 0) {
+            num_weights = i;
+            break;
+        }
 	}
 
     // Antalet tyngder.
-    int num_weights = sizeof(weights) / sizeof(int);
 
     // Totalvikten så vet vi maxvikten vi kan väga upp mot.
     int total_weight = 0;

@@ -47,18 +47,24 @@
     <ClInclude Include="source\strlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\marphilib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="example.maz" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\uppgift_4.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\uppgift_2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\marphilib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\uppgift_1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\uppgift_4.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

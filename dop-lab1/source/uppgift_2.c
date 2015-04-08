@@ -2,16 +2,10 @@
 // INCLUDES
 //---------------------------------------------------------
 
-#include <ctype.h>
+#include "marphilib.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-//---------------------------------------------------------
-// TYPES
-//---------------------------------------------------------
-
-typedef enum { FALSE, TRUE } Bool;
 
 //---------------------------------------------------------
 // CONSTANTS
@@ -23,13 +17,46 @@ typedef enum { FALSE, TRUE } Bool;
 // FUNCTION PROTOTYPES
 //---------------------------------------------------------
 
+/*--------------------------------------
+ * Function: main()
+ * Parameters:
+ *
+ * Description:
+ *   Programmets huvudfunktion (avseende uppgift 2).
+ *------------------------------------*/
+main();
+
+/*--------------------------------------
+ * Function: GetIntFromUser()
+ * Parameters:
+ *
+ * Description:
+ *   Låter användaren skriva in ett heltal.
+ *------------------------------------*/
 int GetIntFromUser();
+
+/*--------------------------------------
+ * Function: IsMeasurable()
+ * Parameters: target       Målvikten som ska "motvägas."
+ *             weights      En vektor innehållandes alla tyngder.
+ *             num_weights  Antalet tyngder i weights-vektorn.
+ *
+ * Description:
+ *   Låter användaren skriva in ett heltal.
+ *------------------------------------*/
 Bool IsMeasurable(int target, int weights[], int num_weights);
 
 //---------------------------------------------------------
 // FUNCTIONS
 //---------------------------------------------------------
 
+/*--------------------------------------
+ * Function: main()
+ * Parameters:
+ *
+ * Description:
+ *   Programmets huvudfunktion (avseende uppgift 2).
+ *------------------------------------*/
 main() {
     // Tyngderna vi ska prova med.
     int weights[MAX_WEIGHTS] = { 0 };
@@ -67,46 +94,14 @@ main() {
 }
 
 /*--------------------------------------
- * Function: GetIntFromUser()
- * Parameters:
+ * Function: IsMeasurable()
+ * Parameters: target       Målvikten som ska "motvägas."
+ *             weights      En vektor innehållandes alla tyngder.
+ *             num_weights  Antalet tyngder i weights-vektorn.
  *
  * Description:
  *   Låter användaren skriva in ett heltal.
  *------------------------------------*/
-int GetIntFromUser() {
-    char buf[16];
-    Bool is_valid_int = FALSE;
-
-    while (!is_valid_int) {
-        fgets(buf, sizeof(buf), stdin);
-
-        int len = strlen(buf);
-
-        is_valid_int = TRUE;
-        for (int i = 0; i < len; i++) {
-            char c = buf[i];
-
-            if (c == '\r' || c == '\n') {
-                buf[i] = '\0';
-                break;
-            }
-
-            if (!isdigit(c)) {
-                is_valid_int = FALSE;
-                break;
-            }
-        }
-
-        if (strlen(buf) == 0)
-            is_valid_int = FALSE;
-
-        if (!is_valid_int)
-            printf("Invalid integer. Try again: ");
-    }
-
-    return atoi(buf);
-}
-
 Bool IsMeasurable(int target, int weights[], int num_weights) {
     // Vi har lyckats nå målvikten med en kombination av tyngder, vilket innebär
     // att den går att balansera ut mot de tyngder vi har.
@@ -123,6 +118,14 @@ Bool IsMeasurable(int target, int weights[], int num_weights) {
 
     // Vikten på den tyngd vi ska prova med nu.
     int w = weights[i];
+
+    // Vi kan nu göra tre val:
+    //   1. Använd inte tyngden alls.
+    //   2. Använd tyngden som motvikt.
+    //   3. Använd tyngden som medvikt.
+    //
+    // Vi vill testa alla möjliga kombinationer, så vi gör alla tre val
+    // rekursivt nedan.
 
     return IsMeasurable(target    , weights, i)  // Utan tyngden.
         || IsMeasurable(target - w, weights, i)  // Motvikt.

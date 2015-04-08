@@ -27,15 +27,6 @@
 main();
 
 /*--------------------------------------
- * Function: GetIntFromUser()
- * Parameters:
- *
- * Description:
- *   Låter användaren skriva in ett heltal.
- *------------------------------------*/
-int GetIntFromUser();
-
-/*--------------------------------------
  * Function: IsMeasurable()
  * Parameters: target       Målvikten som ska "motvägas."
  *             weights      En vektor innehållandes alla tyngder.

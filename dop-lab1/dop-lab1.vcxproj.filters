@@ -55,5 +55,11 @@
     <ClCompile Include="source\uppgift_4.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\uppgift_2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\uppgift_1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -45,8 +45,6 @@ main() {
         }
     }
 
-    // Antalet tyngder.
-
     // Totalvikten så vet vi maxvikten vi kan väga upp mot.
     int total_weight = 0;
 
@@ -68,17 +66,13 @@ main() {
     system("pause");
 }
 
-/*------------------------------------------------
-* FUNCTIONS
-*----------------------------------------------*/
-
 /*--------------------------------------
-* Function: GetIntFromUser()
-* Parameters:
-*
-* Description:
-*   Låter användaren skriva in ett heltal.
-*------------------------------------*/
+ * Function: GetIntFromUser()
+ * Parameters:
+ *
+ * Description:
+ *   Låter användaren skriva in ett heltal.
+ *------------------------------------*/
 int GetIntFromUser() {
     char buf[16];
     Bool is_valid_int = FALSE;

@@ -87,9 +87,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\marphilib.c" />
-    <ClCompile Include="source\uppgift_1.c" />
     <ClCompile Include="source\uppgift_2.c" />
-    <ClCompile Include="source\uppgift_4.c" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GraphicsLib2010.lib" />

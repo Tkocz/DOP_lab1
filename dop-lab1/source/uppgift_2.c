@@ -124,7 +124,7 @@ Bool IsMeasurable(int target, int weights[], int num_weights) {
     //   2. Använd tyngden som motvikt.
     //   3. Använd tyngden som medvikt.
     //
-    // Vi vill testa alla möjliga kombinationer, så vi gör alla tre val
+    // Vi vill testa alla möjliga kombinationer, så vi utför alla tre val
     // rekursivt nedan.
 
     return IsMeasurable(target    , weights, i)  // Utan tyngden.

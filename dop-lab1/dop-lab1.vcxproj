@@ -52,6 +52,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -69,6 +72,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,12 +86,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\uppgift_3.c" />
+    <ClCompile Include="source\uppgift_4.c" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GraphicsLib2010.lib" />
     <Library Include="lib\MazeLib2012.lib" />
     <Library Include="lib\PCLibs2012.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\exception.h" />
+    <ClInclude Include="source\extgraph.h" />
+    <ClInclude Include="source\gcalloc.h" />
+    <ClInclude Include="source\genlib.h" />
+    <ClInclude Include="source\graphics.h" />
+    <ClInclude Include="source\mazelib.h" />
+    <ClInclude Include="source\random.h" />
+    <ClInclude Include="source\simpio.h" />
+    <ClInclude Include="source\strlib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="example.maz" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

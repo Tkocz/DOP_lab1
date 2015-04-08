@@ -86,7 +86,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\marphilib.c" />
     <ClCompile Include="source\uppgift_2.c" />
   </ItemGroup>
   <ItemGroup>
@@ -95,16 +94,15 @@
     <Library Include="lib\PCLibs2012.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\exception.h" />
-    <ClInclude Include="source\extgraph.h" />
-    <ClInclude Include="source\gcalloc.h" />
-    <ClInclude Include="source\genlib.h" />
-    <ClInclude Include="source\graphics.h" />
-    <ClInclude Include="source\marphilib.h" />
-    <ClInclude Include="source\mazelib.h" />
-    <ClInclude Include="source\random.h" />
-    <ClInclude Include="source\simpio.h" />
-    <ClInclude Include="source\strlib.h" />
+    <ClInclude Include="source\lib\exception.h" />
+    <ClInclude Include="source\lib\extgraph.h" />
+    <ClInclude Include="source\lib\gcalloc.h" />
+    <ClInclude Include="source\lib\genlib.h" />
+    <ClInclude Include="source\lib\graphics.h" />
+    <ClInclude Include="source\lib\mazelib.h" />
+    <ClInclude Include="source\lib\random.h" />
+    <ClInclude Include="source\lib\simpio.h" />
+    <ClInclude Include="source\lib\strlib.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="example.maz" />

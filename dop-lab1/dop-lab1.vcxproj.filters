@@ -20,34 +20,31 @@
     <Library Include="lib\PCLibs2012.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\exception.h">
+    <ClInclude Include="source\lib\exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\extgraph.h">
+    <ClInclude Include="source\lib\extgraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\gcalloc.h">
+    <ClInclude Include="source\lib\gcalloc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\genlib.h">
+    <ClInclude Include="source\lib\genlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\graphics.h">
+    <ClInclude Include="source\lib\graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\mazelib.h">
+    <ClInclude Include="source\lib\mazelib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\random.h">
+    <ClInclude Include="source\lib\random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\simpio.h">
+    <ClInclude Include="source\lib\simpio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\strlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\marphilib.h">
+    <ClInclude Include="source\lib\strlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,9 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\uppgift_2.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\marphilib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

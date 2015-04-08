@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //---------------------------------------------------------
 // TYPES
@@ -13,22 +14,36 @@
 typedef enum { FALSE, TRUE } Bool;
 
 //---------------------------------------------------------
+// CONSTANTS
+//---------------------------------------------------------
+
+#define MAX_WEIGHTS 10
+
+//---------------------------------------------------------
+// FUNCTION PROTOTYPES
+//---------------------------------------------------------
+
+int GetIntFromUser();
+Bool IsMeasurable(int target, int weights[], int num_weights);
+
+//---------------------------------------------------------
 // FUNCTIONS
 //---------------------------------------------------------
 
 main() {
     // Tyngderna vi ska prova med.
-    int weights[10] = { 0 };
-    int num_weights = 10;
-	printf("Enter desired weightstones, end with 0\n");
+    int weights[MAX_WEIGHTS] = { 0 };
+    int num_weights = MAX_WEIGHTS;
 
-	for (int i = 0; i < 10; i++){
-		weights[i] = GetIntFromUser();
+    printf("Enter desired weightstones, end with 0\n");
+
+    for (int i = 0; i < 10; i++){
+        weights[i] = GetIntFromUser();
         if (weights[i] <= 0) {
             num_weights = i;
             break;
         }
-	}
+    }
 
     // Antalet tyngder.
 

@@ -74,7 +74,7 @@ main() {
     int weights[MAX_WEIGHTS] = { 0 };
     int num_weights = MAX_WEIGHTS;
 
-    printf("Enter desired weightstones, end with 0\n");
+    printf("Enter desired weightstones (Max is %d), end with 0\n", MAX_WEIGHTS);
 
     for (int i = 0; i < 10; i++){
         weights[i] = GetInteger();

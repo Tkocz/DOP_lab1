@@ -19,8 +19,8 @@ typedef enum { FALSE, TRUE } Bool;
 main() {
     // Tyngderna vi ska prova med.
     int weights[10] = { 0 };
-    int num_weights;
-
+    int num_weights = 10;
+	printf("Enter desired weightstones, end with 0\n");
 
 	for (int i = 0; i < 10; i++){
 		weights[i] = GetIntFromUser();

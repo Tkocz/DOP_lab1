@@ -61,5 +61,8 @@
     <ClCompile Include="source\uppgift_1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\dop-lab1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

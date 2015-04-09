@@ -5,9 +5,9 @@
  */
 
 #include <stdio.h>
-#include "genlib.h"
-#include "graphics.h"
-#include "mazelib.h"
+#include "lib/genlib.h"
+#include "lib/graphics.h"
+#include "lib/mazelib.h"
 
 /*
  * Constants
@@ -24,7 +24,7 @@ static pointT AdjacentPoint(pointT pt, directionT dir);
 
 /* Main program */
 
-main()
+Uppgift4()
 {
     InitGraphics();
     ReadMazeMap(MazeFile);

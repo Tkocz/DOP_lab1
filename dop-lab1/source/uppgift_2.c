@@ -64,13 +64,13 @@ bool IsMeasurable(int target, int weights[], int num_weights) {
 }
 
 /*--------------------------------------
- * Function: main()
+ * Function: Uppgift2()
  * Parameters:
  *
  * Description:
  *   Programmets huvudfunktion (avseende uppgift 2).
  *------------------------------------*/
-main() {
+void Uppgift2() {
     int weights[MAX_WEIGHTS] = { 0 };
     int num_weights = MAX_WEIGHTS;
 

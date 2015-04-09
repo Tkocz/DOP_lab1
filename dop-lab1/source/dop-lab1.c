@@ -1,0 +1,3 @@
+main() {
+    Uppgift2();
+}

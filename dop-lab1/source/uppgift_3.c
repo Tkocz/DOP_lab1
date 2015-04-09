@@ -193,6 +193,6 @@ void Uppgift3() {
     // Wiiieeee!
     SubdivTri(a, b, c, num_subdivs, disp);
 
-    printf("Well, I never..! That is one excitng mesh of triangles if I ever");
+    printf("Well, I never..! That is one exciting mesh of triangles if I ever");
     printf(" saw one!\n");
 }

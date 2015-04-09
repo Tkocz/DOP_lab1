@@ -129,15 +129,15 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
      * ligger på mitten av segmentet.
      */
 
-    // sv0 = mitten av v0 och v1
+    // sv0 = mittimellan v0 och v1
     sv0.x = (v1.x + v0.x) / 2.0f;
     sv0.y = (v1.y + v0.y) / 2.0f;
 
-    // sv1 = mitten av v1 och v2
+    // sv1 = mittimellan v1 och v2
     sv1.x = (v2.x + v1.x) / 2.0f;
     sv1.y = (v2.y + v1.y) / 2.0f;
 
-    // sv2 = mitten av v0 och v2
+    // sv2 = mittimellan v0 och v2
     sv2.x = (v0.x + v2.x) / 2.0f;
     sv2.y = (v0.y + v2.y) / 2.0f;
 

@@ -41,7 +41,7 @@ typedef struct {
  * Constant: TRI_SIZE
  *
  * Description:
- *   Storleken på triangeln.
+ *   Storleken på den yttersta triangeln.
  *------------------------------------*/
 #define TRI_SIZE 1.6f
 

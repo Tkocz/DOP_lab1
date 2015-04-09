@@ -33,7 +33,7 @@ typedef struct {
  * Constant: MAX_SUBDIVS
  *
  * Description:
- *   Max antal subdivideringar av triangeln.
+ *   Max antal subdivideringar av den yttersta triangeln.
  *------------------------------------*/
 #define MAX_SUBDIVS 10
 

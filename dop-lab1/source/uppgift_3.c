@@ -5,7 +5,6 @@
 #include "lib/genlib.h"
 #include "lib/graphics.h"
 #include "lib/simpio.h"
-#include "lib/strlib.h"
 
 #include <math.h>
 #include <stdio.h>

@@ -13,7 +13,7 @@
 //---------------------------------------------------------
 
 /*--------------------------------------
- * Constants: MAX_WEIGHTS
+ * Constant: MAX_WEIGHTS
  *
  * Description:
  *   Max antal tyngder.

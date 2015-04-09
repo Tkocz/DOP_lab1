@@ -76,7 +76,7 @@ void Uppgift2() {
 
     printf("Enter desired weightstones (Max is %d), end with 0\n", MAX_WEIGHTS);
 
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++) {
         weights[i] = GetInteger();
         if (weights[i] <= 0) {
             num_weights = i;

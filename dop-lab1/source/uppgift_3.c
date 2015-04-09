@@ -147,14 +147,11 @@ static void SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
 }
 
 /*--------------------------------------
- * Function: SubdivTri()
- * Parameters: v0           Punkt ett.
- *             v1           Punkt två.
- *             v2           Punkt tre.
- *             num_subdivs  Antal subdivideringar som ska utföras.
+ * Function: Uppgift3()
+ * Parameters:
  *
  * Description:
- *   Ritar den givna triangeln och delar upp den i fler, mindre trianglar.
+ *   Huvudfunktionen för uppgift 3.
  *------------------------------------*/
 void Uppgift3() {
     // Nej, jag tänker inte göra egna funktioner för att läsa in antal

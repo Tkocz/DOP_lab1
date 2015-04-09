@@ -48,8 +48,8 @@ void PrintGrayCode(int num_bits){
 }
 
 void GrayCode(int num_bits, char bitList[]){
-	if (num_bits == 1) bitList = ['0', '1'];
-	else;
+	//if (num_bits == 1) bitList = ['0', '1'];
+	//else;
 }
 
 

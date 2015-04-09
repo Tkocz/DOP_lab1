@@ -29,38 +29,15 @@ void PrintReverseGrayCode(int num_bits);
 //---------------------------------------------------------
 
 Uppgift1() {
-    printf("HEJSAN UPPGIFT 1\n");
-    PrintGrayCode(3);
-    system("pause");
-}
+	/*
+	
+	sträng bits
 
-void PrintGrayCode(int num_bits) {
-    if (num_bits == 1) {
-        printf("0");
-        printf("1");
-    }
+	Om nbits är 1: {0,1}
+	Annars 
+		graycode(nbits-1)
 
-    if (num_bits == 0) {
-        printf("\n");
-        return;
-    }
-
-    PrintGrayCode(num_bits - 1);
-    PrintReverseGrayCode(num_bits - 1);
-}
-
-void PrintReverseGrayCode(int num_bits) {
-    if (num_bits == 1) {
-        printf("1");
-        printf("0");
-    }
-
-    if (num_bits == 0) {
-        printf("\n");
-        return;
-    }
-
-    PrintGrayCode(num_bits - 1);
-    PrintReverseGrayCode(num_bits - 1);
-
-}
+	sträng spegelbits = reverserad bits
+	{bits.spegelbits}
+	
+	*/

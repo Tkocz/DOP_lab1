@@ -93,9 +93,8 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
     // att rita triangeln. Detta är de minsta trianglarna vi skapar, och det är
     // bara dem vi ritar upp i fönstret.
     if (num_subdivs == 0) {
-        // Vi ritar bara triangeln i sista steget...
         DrawTri(v0, v1, v2, FALSE);
-        return 1;
+        return 1; // Returnera 1 så att vi kan räkna trianglarna...
     }
 
     // Vi har inte nått maxdjup än, så vi skapar fyra ännu mindre trianglar...

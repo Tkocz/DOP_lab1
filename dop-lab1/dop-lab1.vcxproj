@@ -87,7 +87,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\dop-lab1.c" />
-    <ClCompile Include="source\uppgift_1.c" />
     <ClCompile Include="source\uppgift_2.c" />
     <ClCompile Include="source\uppgift_3.c" />
     <ClCompile Include="source\uppgift_4.c" />
@@ -109,6 +108,7 @@
     <ClInclude Include="source\lib\strlib.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="docs\Lab1_2015.pdf" />
     <None Include="example.maz" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

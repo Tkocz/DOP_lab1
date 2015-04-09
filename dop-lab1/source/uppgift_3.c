@@ -24,6 +24,7 @@ typedef struct {
     float x, y;
 } vertexT;
 
+
 //---------------------------------------------------------
 // CONSTANTS
 //---------------------------------------------------------
@@ -43,6 +44,19 @@ typedef struct {
  *   Storleken på triangeln.
  *------------------------------------*/
 #define TRI_SIZE 1.6f
+
+//---------------------------------------------------------
+// GLOBALS
+//---------------------------------------------------------
+
+/*--------------------------------------
+ * Variable: g_num_tris
+ *
+ * Description:
+ *   Antalet renderade trianglar. JAG VET, JAG VET. Inga globala variabler...
+ *   Kom igen nu, vi använder bara den här för statistik!
+ *------------------------------------*/
+static int g_num_tris = 0;
 
 //---------------------------------------------------------
 // FUNCTIONS
@@ -71,6 +85,8 @@ static void DrawTri(vertexT v0, vertexT v1, vertexT v2) {
 
     // v2 -> v0
     DrawLine(v0.x - v2.x, v0.y - v2.y);
+
+    g_num_tris++;
 }
 
 /*--------------------------------------
@@ -195,4 +211,5 @@ void Uppgift3() {
 
     printf("Well, I never..! That is one exciting mesh of triangles if I ever");
     printf(" saw one!\n");
+    printf("\n%d triangles drawn.\n", g_num_tris);
 }

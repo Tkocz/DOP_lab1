@@ -131,7 +131,7 @@ static void SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
     if (disp) {
         // Vi flyttar dem lite upp och ner för 3d-effekten...
 
-        float d = 5.0f * pow(0.5, MAX_SUBDIVS - num_subdivs);
+        float d = 9.0f * pow(0.5, MAX_SUBDIVS - num_subdivs);
         sv0.y += sin(10.0*sv0.x + 5.0*sv0.y) * d;
         sv1.y += sin(10.0*sv1.x + 5.0*sv1.y) * d;
         sv2.y += sin(10.0*sv2.x + 5.0*sv2.y) * d;
@@ -195,4 +195,7 @@ void Uppgift3() {
 
     // Wiiieeee!
     SubdivTri(a, b, c, num_subdivs, disp);
+
+    printf("Well, I never..! That is one exicitng mesh of triangles if I ever");
+    printf(" saw one!\n");
 }

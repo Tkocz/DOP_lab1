@@ -46,19 +46,6 @@ typedef struct {
 #define TRI_SIZE 1.6f
 
 //---------------------------------------------------------
-// GLOBALS
-//---------------------------------------------------------
-
-/*--------------------------------------
- * Variable: g_num_tris
- *
- * Description:
- *   Antalet renderade trianglar. JAG VET, JAG VET. Inga globala variabler...
- *   Kom igen nu, vi använder bara den här för statistik!
- *------------------------------------*/
-static int g_num_tris = 0;
-
-//---------------------------------------------------------
 // FUNCTIONS
 //---------------------------------------------------------
 
@@ -85,8 +72,6 @@ static void DrawTri(vertexT v0, vertexT v1, vertexT v2) {
 
     // v2 -> v0
     DrawLine(v0.x - v2.x, v0.y - v2.y);
-
-    g_num_tris++;
 }
 
 /*--------------------------------------
@@ -96,18 +81,25 @@ static void DrawTri(vertexT v0, vertexT v1, vertexT v2) {
  *             v2           Punkt tre.
  *             num_subdivs  Antal subdivideringar som ska utföras.
  *             disp         TRUE för att använda "displacement."
+ * Returns:    The number of triangles drawn.
  *
  * Description:
  *   Ritar den givna triangeln och delar upp den i fler, mindre trianglar.
  *------------------------------------*/
-static void SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
+static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
                       bool disp)
 {
-    if (num_subdivs < 1) {
+
+    // Om num_subdivs == 0 så har vi nått maximal subdividering, och det är dags
+    // att rita triangeln. Detta är de minsta trianglarna vi skapar, och det är
+    // bara dem vi ritar upp i fönstret.
+    if (num_subdivs == 0) {
         // Vi ritar bara triangeln i sista steget...
         DrawTri(v0, v1, v2, FALSE);
-        return; // Klara!
+        return 1;
     }
+
+    // Vi har inte nått maxdjup än, så vi skapar fyra ännu mindre trianglar...
 
     vertexT sv0, sv1, sv2;
 
@@ -134,7 +126,9 @@ static void SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
      *  4. sv0 -> v1  -> sv1 -> sv0
      *
      * Dessa är de fyra "subdividerade" trianglarna, vilka vi skapar genom
-     * rekursion.
+     * rekursion. Vi räknar ut de nya punkterna genom att ta snitten mellan två
+     * andra punkter i den triangel vi har, vilket ger en s.k. midpoint som
+     * ligger på mitten av segmentet.
      */
 
     sv0.x = (v1.x + v0.x) / 2.0f;
@@ -145,21 +139,23 @@ static void SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
     sv2.y = (v0.y + v2.y) / 2.0f;
 
     if (disp) {
-        // Vi flyttar dem lite upp och ner för 3d-effekten...
+        // Vi flyttar dem lite upp och ner för att få 3d-effekt om disp == TRUE...
 
         float d = 9.0f * pow(0.5, MAX_SUBDIVS - num_subdivs);
+
         sv0.y += sin(10.0*sv0.x + 5.0*sv0.y) * d;
         sv1.y += sin(10.0*sv1.x + 5.0*sv1.y) * d;
         sv2.y += sin(10.0*sv2.x + 5.0*sv2.y) * d;
     }
 
-    // Här har vi klarat av en subdividering, så vi minskar num_subdivs med ett.
+    // Här har vi klarat av en nivå subdividering, så vi minskar num_subdivs med
+    // ett och kör nästa nivå fyra gånger om (en för varje mindre triangel).
     num_subdivs--;
 
-    SubdivTri(v0 , sv0, sv2, num_subdivs, disp);
-    SubdivTri(sv2, sv0, sv1, num_subdivs, disp);
-    SubdivTri(sv2, sv1, v2 , num_subdivs, disp);
-    SubdivTri(sv0, v1 , sv1, num_subdivs, disp);
+    return SubdivTri(v0 , sv0, sv2, num_subdivs, disp)
+         + SubdivTri(sv2, sv0, sv1, num_subdivs, disp)
+         + SubdivTri(sv2, sv1, v2 , num_subdivs, disp)
+         + SubdivTri(sv0, v1 , sv1, num_subdivs, disp);
 }
 
 /*--------------------------------------
@@ -170,6 +166,10 @@ static void SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
  *   Huvudfunktionen för uppgift 3.
  *------------------------------------*/
 void Uppgift3() {
+    //**************************************
+    // 1. Låt användare ange inputs.
+    //**************************************
+
     // Nej, jag tänker inte göra egna funktioner för att läsa in antal
     // subdivideringar och displacement... /Philip
 
@@ -185,11 +185,24 @@ void Uppgift3() {
 
     FreeBlock(s);
 
+    //**************************************
+    // 2. Verifiera korrekta inputs.
+    //**************************************
+
     if (num_subdivs < 0          ) num_subdivs = 0;
     if (num_subdivs > MAX_SUBDIVS) num_subdivs = MAX_SUBDIVS;
 
+    //**************************************
+    // 3. Starta grafikbiblioteket.
+    //**************************************
+
     InitGraphics();
 
+    //**************************************
+    // 4. Skapa den yttersta triangeln.
+    //**************************************
+
+    // Vi utgår ifrån mitten av fönstret för att få en centrerad triangel.
     float half_width  = GetWindowWidth()  / 2.0f;
     float half_height = GetWindowHeight() / 2.0f;
 
@@ -198,7 +211,19 @@ void Uppgift3() {
 
     vertexT a, b, c;
 
-    // Här skapar vi den yttersta triangeln...
+    /*
+     * Här skapar vi den yttersta triangeln:
+     *
+     *      a
+     *      /\
+     *     /  \
+     *    /    \
+     *   /      \
+     *  /________\
+     * c          b
+     *
+     * Presto!
+     */
     a.x = half_width;
     a.y = half_height + TRI_SIZE * 0.707f; // 0.5sqrt(2) för likbenthet...
     b.x = half_width  + TRI_SIZE;
@@ -206,10 +231,14 @@ void Uppgift3() {
     c.x = half_width  - TRI_SIZE;
     c.y = half_height - TRI_SIZE;
 
+    //**************************************
+    // 5. Nu blir det rekursion!
+    //**************************************
+
     // Wiiieeee!
-    SubdivTri(a, b, c, num_subdivs, disp);
+    int num_tris = SubdivTri(a, b, c, num_subdivs, disp);
 
     printf("Well, I never..! That is one exciting mesh of triangles if I ever "
            "saw one!\n");
-    printf("\n%d triangles drawn.\n", g_num_tris);
+    printf("\n%d triangles drawn.\n", num_tris);
 }

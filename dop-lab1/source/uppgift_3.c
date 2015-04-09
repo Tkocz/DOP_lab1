@@ -165,7 +165,7 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
  *------------------------------------*/
 void Uppgift3() {
     //**************************************
-    // 1. Låt användare ange inputs.
+    // 1. Låt användaren ange inputs.
     //**************************************
 
     // Nej, jag tänker inte göra egna funktioner för att läsa in antal

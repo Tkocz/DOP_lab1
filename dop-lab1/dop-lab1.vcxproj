@@ -87,6 +87,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\dop-lab1.c" />
+    <ClCompile Include="source\uppgift_1.c" />
     <ClCompile Include="source\uppgift_2.c" />
     <ClCompile Include="source\uppgift_3.c" />
     <ClCompile Include="source\uppgift_4.c" />

@@ -24,7 +24,7 @@ static pointT AdjacentPoint(pointT pt, directionT dir);
 
 /* Main program */
 
-Uppgift4()
+void Uppgift4()
 {
     InitGraphics();
     ReadMazeMap(MazeFile);

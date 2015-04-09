@@ -86,7 +86,7 @@ static void DrawTri(vertexT v0, vertexT v1, vertexT v2) {
  *   Ritar den givna triangeln och delar upp den i fler, mindre trianglar.
  *------------------------------------*/
 static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
-                      bool disp)
+                     bool disp)
 {
 
     // Om num_subdivs == 0 så har vi nått maximal subdividering, och det är dags

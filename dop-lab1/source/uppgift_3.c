@@ -164,7 +164,7 @@ void Uppgift3() {
     string s = GetLine();
 
     bool disp = FALSE;
-    if (s[0] == '\0' || s[0] == 'Y' || s[0] == 'y')
+    if (s[0]=='\0' || s[0]=='Y' || s[0]=='y')
         disp = TRUE;
 
     FreeBlock(s);

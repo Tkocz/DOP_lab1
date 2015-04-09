@@ -64,13 +64,13 @@ static void DrawTri(vertexT v0, vertexT v1, vertexT v2) {
 
     // ...och ritar sedan triangles tre sidor.
 
-    // v0 -> v1
+    // v0----v1
     DrawLine(v1.x - v0.x, v1.y - v0.y);
 
-    // v1 -> v2
+    // v1----v2
     DrawLine(v2.x - v1.x, v2.y - v1.y);
 
-    // v2 -> v0
+    // v2----v0
     DrawLine(v0.x - v2.x, v0.y - v2.y);
 }
 

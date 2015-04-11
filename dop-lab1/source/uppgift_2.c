@@ -33,7 +33,7 @@
  * Description:
  *   Låter användaren skriva in ett heltal.
  *------------------------------------*/
-bool IsMeasurable(int target, int weights[], int num_weights) {
+static bool IsMeasurable(int target, int weights[], int num_weights) {
     // Vi har lyckats nå målvikten med en kombination av tyngder, vilket innebär
     // att den går att balansera ut mot de tyngder vi har.
     if (target == 0)

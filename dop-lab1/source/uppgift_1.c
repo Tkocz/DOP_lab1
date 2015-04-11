@@ -19,8 +19,8 @@
 //---------------------------------------------------------
 
 void PrintGrayCode(int num_bits);
-void GrayCode(int num_bits, char* bitList);
-void ReverseGrayCode(int num_bits, char* bitList);
+string GrayCode(int num_bits);
+//void ReverseGrayCode(int num_bits, char* bitList);
 
 //---------------------------------------------------------
 // FUNCTIONS
@@ -36,32 +36,33 @@ Uppgift1() {
 }
 
 void PrintGrayCode(int num_bits){
-	char bitList[10];
-	GrayCode(num_bits, bitList);
-	printf("GrayCode for %d bits", num_bits);
+	string bitList;
+	bitList = GrayCode(num_bits);
+	printf("%s", bitList);
 }
 
-void GrayCode(int num_bits, char bitList[]){
-	//if (num_bits == 1) bitList = ['0', '1'];
-	//else;
-}
+string GrayCode(int num_bits){
+	static string bitList;
+	string reverseBitList = "";
+	string zero = "0";
+	string one = "1";
+	int i = 0;
+	if (num_bits == 1) bitList = "01";
+	else{
+		bitList = GrayCode(num_bits - 1);
+		/*strcpy(reverseBitList, bitList);
+		strrev(reverseBitList);
 
+			strcat(zero, bitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
+			strcpy(bitList, zero);
+			strcat(one, reverseBitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
+			strcpy(reverseBitList, one);
 
-/* Generell tanke om struktur *
+			misstänker allt detta går bättre med Roberts lib. ska titta på detta
 
-main(){
-	nBits=GetInteger();  //villkora naturliga tal
-	char* bits
-	void PrintGrayCode(int num_bits){ 
-		if(numBits == 1) { bits = ['0','1']; } 
-		else { 
-			if(numBits != 1) { PrintGrayCode(num_bits - 1); } 
-			char* mirroredBits = reverse(bits); 
-			concat(bits,mirroredBits); 
-			//for the first n bits, append 0 
-			//for the last n bits, append 1 
-		} 
+			*/
+		strcat(bitList, reverseBitList);
 	}
-}
+	return(bitList);
 
-*/
+}

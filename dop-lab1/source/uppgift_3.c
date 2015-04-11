@@ -254,7 +254,7 @@ void Uppgift3() {
     //**************************************
 
     InitGraphics();
-    SetWindowTitle("TriWin31337");
+    SetWindowTitle("TriWin1337");
 
     //**************************************
     // 4. Skapa den yttersta triangeln.
@@ -300,7 +300,7 @@ void Uppgift3() {
         float win_height = GetWindowHeight();
 
         // H4x!
-        HWND hwnd = FindWindow(NULL, _T("TriWin31337"));
+        HWND hwnd = FindWindow(NULL, _T("TriWin1337"));
 
         while (TRUE) {
             // Förbjud fönstret från att uppdateras under uppritning, så att det

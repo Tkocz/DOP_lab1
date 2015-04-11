@@ -4,10 +4,15 @@
 
 #include "lib/genlib.h"
 #include "lib/graphics.h"
+#include "lib/extgraph.h"
 #include "lib/simpio.h"
 
 #include <math.h>
 #include <stdio.h>
+
+// Dessa använder vi för att förhindra flimmer.
+#include <Windows.h>
+#include <tchar.h>
 
 //---------------------------------------------------------
 // TYPES
@@ -22,7 +27,6 @@
 typedef struct {
     float x, y;
 } vertexT;
-
 
 //---------------------------------------------------------
 // CONSTANTS
@@ -43,6 +47,20 @@ typedef struct {
  *   Storleken på den yttersta triangeln.
  *------------------------------------*/
 #define TRI_SIZE 1.6f
+
+//---------------------------------------------------------
+// GLOBALS
+//---------------------------------------------------------
+
+/*--------------------------------------
+ * Variable: g_anim
+ *
+ * Description:
+ *   Används för animation. JAG VET, JAG VET, inga globala variabler. Kom igen
+ *   nu, det här är ju jättehäftigt och används bara för att det ska se ballt
+ *   ut, inte för att lösa uppgiften.
+ *------------------------------------*/
+static float g_anim = 0.0f;
 
 //---------------------------------------------------------
 // FUNCTIONS
@@ -118,10 +136,23 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
      * v2       sv1       v1
      *
      * Med dessa kan vi skapa fyra nya trianglar:
-     *  1. v0  -> sv0 -> sv2 -> v0
-     *  2. sv2 -> sv0 -> sv1 -> sv2
-     *  3. sv2 -> sv1 -> v2  -> sv2
-     *  4. sv0 -> v1  -> sv1 -> sv0
+     *   1. v0  -> sv0 -> sv2 -> v0
+     *   2. sv2 -> sv0 -> sv1 -> sv2
+     *   3. sv2 -> sv1 -> v2  -> sv2
+     *   4. sv0 -> v1  -> sv1 -> sv0
+     *
+     *          v0
+     *          /\
+     *         /  \
+     *        / 1  \
+     *       /______\
+     *  sv2 /\      /\ sv0
+     *     /  \ 2  /  \
+     *    /    \  /    \
+     *   /  3   \/  4   \
+     *  /________________\
+     * v2       sv1       v1
+     *
      *
      * Dessa är de fyra "subdividerade" trianglarna, vilka vi skapar genom
      * rekursion. Vi räknar ut de nya punkterna genom att ta snitten mellan två
@@ -144,21 +175,44 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
     if (disp) {
         // Vi flyttar dem lite upp och ner för att få 3d-effekt om disp == TRUE...
 
-        float d = 9.0f * pow(0.5, MAX_SUBDIVS - num_subdivs);
+        float d = 12.0f * pow(0.5, MAX_SUBDIVS - num_subdivs);
 
-        sv0.y += sin(10.0*sv0.x + 5.0*sv0.y) * d;
-        sv1.y += sin(10.0*sv1.x + 5.0*sv1.y) * d;
-        sv2.y += sin(10.0*sv2.x + 5.0*sv2.y) * d;
+        sv0.y += sin(10.0*sv0.x + 5.0*sv0.y + g_anim) * d;
+        sv1.y += sin(10.0*sv1.x + 5.0*sv1.y + g_anim) * d;
+        sv2.y += sin(10.0*sv2.x + 5.0*sv2.y + g_anim) * d;
     }
 
     // Här har vi klarat av en nivå subdividering, så vi minskar num_subdivs med
     // ett och kör nästa nivå fyra gånger om (en för varje mindre triangel).
     num_subdivs--;
 
-    return SubdivTri(v0 , sv0, sv2, num_subdivs, disp)
-         + SubdivTri(sv2, sv0, sv1, num_subdivs, disp)
-         + SubdivTri(sv2, sv1, v2 , num_subdivs, disp)
-         + SubdivTri(sv0, v1 , sv1, num_subdivs, disp);
+    return SubdivTri(v0 , sv0, sv2, num_subdivs, disp)  // Triangel 1.
+         + SubdivTri(sv2, sv0, sv1, num_subdivs, disp)  // - || -   2.
+         + SubdivTri(sv2, sv1, v2 , num_subdivs, disp)  // - || -   3.
+         + SubdivTri(sv0, v1 , sv1, num_subdivs, disp); // - || -   4.
+}
+
+/*--------------------------------------
+ * Function: DisableRedraw()
+ * Parameters: hwnd Fönster-"pekare."
+ *
+ * Description:
+ *   Hindrar fönstret från att rita upp sitt innehåll.
+ *------------------------------------*/
+static void DisableRedraw(HWND hwnd) {
+    SendMessage(hwnd, WM_SETREDRAW, FALSE, 0);
+}
+
+/*--------------------------------------
+ * Function: EnableRedraw()
+ * Parameters: hwnd Fönster-"pekare."
+ *
+ * Description:
+ *   Tillåter fönstret att rita upp sitt innehåll.
+ *------------------------------------*/
+static void EnableRedraw(HWND hwnd) {
+    SendMessage(hwnd, WM_SETREDRAW, TRUE, 0);
+    RedrawWindow(hwnd, NULL, NULL, RDW_INVALIDATE);
 }
 
 /*--------------------------------------
@@ -200,6 +254,7 @@ void Uppgift3() {
     //**************************************
 
     InitGraphics();
+    SetWindowTitle("TriWin31337");
 
     //**************************************
     // 4. Skapa den yttersta triangeln.
@@ -238,10 +293,51 @@ void Uppgift3() {
     // 5. Nu blir det rekursion!
     //**************************************
 
-    // Wiiieeee!
-    int num_tris = SubdivTri(a, b, c, num_subdivs, disp);
+    // Vi animerar bara om vi använder displacement, annars syns det ju inte
+    // ändå...
+    if (disp) {
+        float win_width  = GetWindowWidth();
+        float win_height = GetWindowHeight();
 
-    printf("Well, I never..! That is one exciting mesh of triangles if I ever "
-           "saw one!\n");
-    printf("\n%d triangles drawn.\n", num_tris);
+        // H4x!
+        HWND hwnd = FindWindow(NULL, _T("TriWin31337"));
+
+        while (TRUE) {
+            // Förbjud fönstret från att uppdateras under uppritning, så att det
+            // inte "flimrar."
+            DisableRedraw(hwnd);
+                
+            // Rensa ritytan.
+            SetEraseMode(TRUE);
+            StartFilledRegion(1.0);
+                MovePen (0.0       , 0.0);
+                DrawLine(win_width , 0.0);
+                DrawLine(0.0       , win_height);
+                DrawLine(-win_width, 0.0);
+            EndFilledRegion();
+            SetEraseMode(FALSE);
+
+            // Rita trianglarna!
+            SubdivTri(a, b, c, num_subdivs, disp);
+
+            // Nu tillåter vi att allt ritas upp i fönstret igen.
+            EnableRedraw(hwnd);
+
+            // 60fps blir säkert bra.
+            Pause(1.0 / 60.0);
+
+            // Wiiieee, den fladdrar i vinden!
+            g_anim += 0.1f;
+        }
+    }
+    else {
+        // Rita trianglarna!
+        int num_tris = SubdivTri(a, b, c, num_subdivs, disp);
+        printf("Well, I never..! That is one exciting mesh of triangles if I "
+               "ever saw one!\n");
+        printf("\n%d triangles drawn.\n", num_tris);
+    }
+
+    system("pause");
+    ExitGraphics();
 }

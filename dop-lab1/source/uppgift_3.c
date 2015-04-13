@@ -327,7 +327,7 @@ void Uppgift3() {
             Pause(1.0 / 60.0);
 
             // Wiiieee, den fladdrar i vinden!
-            g_anim += 0.1f;
+            g_anim += 0.21f;
         }
     }
     else {

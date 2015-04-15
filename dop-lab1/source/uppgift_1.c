@@ -2,14 +2,11 @@
 // INCLUDES
 //---------------------------------------------------------
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "lib/simpio.h"
 #include "lib/genlib.h"
 #include "lib/strlib.h"
+
+#include <stdio.h>
 
 //---------------------------------------------------------
 // FUNCTIONS

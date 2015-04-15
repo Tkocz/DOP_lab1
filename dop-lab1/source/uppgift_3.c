@@ -7,12 +7,12 @@
 #include "lib/extgraph.h"
 #include "lib/simpio.h"
 
-#include <math.h>
-#include <stdio.h>
-
 // Dessa använder vi för att förhindra flimmer.
 #include <Windows.h>
 #include <tchar.h>
+
+#include <math.h>
+#include <stdio.h>
 
 //---------------------------------------------------------
 // TYPES
@@ -111,7 +111,7 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
     // att rita triangeln. Detta är de minsta trianglarna vi skapar, och det är
     // bara dem vi ritar upp i fönstret.
     if (num_subdivs == 0) {
-        DrawTri(v0, v1, v2, FALSE);
+        DrawTri(v0, v1, v2);
         return 1; // Returnera 1 så att vi kan räkna trianglarna...
     }
 
@@ -175,11 +175,11 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
     if (disp) {
         // Vi flyttar dem lite upp och ner för att få 3d-effekt om disp == TRUE...
 
-        float d = 12.0f * pow(0.5, MAX_SUBDIVS - num_subdivs);
+        float d = 12.0f * (float)pow(0.5f, MAX_SUBDIVS - num_subdivs);
 
-        sv0.y += sin(10.0*sv0.x + 5.0*sv0.y + g_anim) * d;
-        sv1.y += sin(10.0*sv1.x + 5.0*sv1.y + g_anim) * d;
-        sv2.y += sin(10.0*sv2.x + 5.0*sv2.y + g_anim) * d;
+        sv0.y += (float)sin(10.0f*sv0.x + 5.0f*sv0.y + g_anim) * d;
+        sv1.y += (float)sin(10.0f*sv1.x + 5.0f*sv1.y + g_anim) * d;
+        sv2.y += (float)sin(10.0f*sv2.x + 5.0f*sv2.y + g_anim) * d;
     }
 
     // Här har vi klarat av en nivå subdividering, så vi minskar num_subdivs med
@@ -261,8 +261,8 @@ void Uppgift3() {
     //**************************************
 
     // Vi utgår ifrån mitten av fönstret för att få en centrerad triangel.
-    float half_width  = GetWindowWidth()  / 2.0f;
-    float half_height = GetWindowHeight() / 2.0f;
+    float half_width  = (float)GetWindowWidth()  / 2.0f;
+    float half_height = (float)GetWindowHeight() / 2.0f;
 
     // Lite mer centrerad... Orkar inte räkna på saken, duger såhär. /Philip
     half_height *= 1.13f;
@@ -296,8 +296,8 @@ void Uppgift3() {
     // Vi animerar bara om vi använder displacement, annars syns det ju inte
     // ändå...
     if (disp) {
-        float win_width  = GetWindowWidth();
-        float win_height = GetWindowHeight();
+        float win_width  = (float)GetWindowWidth();
+        float win_height = (float)GetWindowHeight();
 
         // H4x!
         HWND hwnd = FindWindow(NULL, _T("TriWin1337"));

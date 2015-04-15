@@ -22,17 +22,50 @@
 static bool SolveMaze(pointT pt);
 static pointT AdjacentPoint(pointT pt, directionT dir);
 
+// HÄR NEDANFÖR KOMMER VÅR ELAJT-KOD SOM LÖSER ALLA PROBLEM I HELA VÄRLDEN
+// -----------------------------------------------------------------------
+
+#define NoSolution 10000int ShortestPathLength(pointT pt) {    directionT dir;
+
+    if (OutsideMaze(pt)) return 1;
+    if (IsMarked(pt)) return NoSolution;
+
+    MarkSquare(pt);
+
+    int n = SolveMaze(AdjacentPoint(pt, North));
+    int e = SolveMaze(AdjacentPoint(pt, East));
+    int s = SolveMaze(AdjacentPoint(pt, South));
+    int w = SolveMaze(AdjacentPoint(pt, West));
+
+    int min = 9999999;
+
+    if (n < min) min = n;
+    if (e < min) min = e;
+    if (s < min) min = s;
+    if (w < min) min = w;
+
+    UnmarkSquare(pt);
+
+    return 1 + min;}
+
+// ELAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJT
+
 /* Main program */
 
 void Uppgift4()
 {
     InitGraphics();
     ReadMazeMap(MazeFile);
-    if (SolveMaze(GetStartPosition())) {
+    /*if (SolveMaze(GetStartPosition())) {
         printf("The marked squares show a solution path.\n");
     } else {
         printf("No solution exists.\n");
-    }
+    }*/
+
+    ////////// ELAJT STUDENTKOD
+    printf("%d\n", ShortestPathLength(GetStartPosition()));
+    //////////////////////
+
 }
 
 /*
@@ -87,3 +120,4 @@ static pointT AdjacentPoint(pointT pt, directionT dir)
     }
     return (newpt);
 }
+

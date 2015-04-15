@@ -33,18 +33,62 @@ Uppgift1() {
 	while (num_bits <= 0) num_bits = GetInteger();
 
 	PrintGrayCode(num_bits);
-
+    system("pause");
 }
 
 void PrintGrayCode(int num_bits){
-	string bitList;
+	/*string bitList;
 	bitList = GrayCode(num_bits);
 	printf("%s", bitList);
-	system("pause");
+	system("pause");*/
+    GrayCode("", num_bits, FALSE);
 }
 
-string GrayCode(int num_bits){
-	static string bitList;
+string GrayCode(string s, int num_bits, bool omvand){
+    if (num_bits == 1) {
+        string a = Concat(s, "0");
+        string b = Concat(s, "1");
+
+        if (omvand && FALSE) {
+            printf("%s\n", b);
+            printf("%s\n", a);
+        }
+        else {
+            printf("%s\n", a);
+            printf("%s\n", b);
+        }
+
+        FreeBlock(a);
+        FreeBlock(b);
+
+        return;
+    }
+
+    string s1 = Concat("0", s);
+    string s2 = Concat("1", s);
+
+    if (omvand) {
+        GrayCode(s2, num_bits - 1, FALSE);
+        GrayCode(s1, num_bits - 1, TRUE);
+    }
+    else {
+        GrayCode(s1, num_bits - 1, FALSE);
+        GrayCode(s2, num_bits - 1, TRUE);
+    }
+
+    FreeBlock(s1);
+    FreeBlock(s2);
+
+
+    //1
+
+    //2
+    //string revs = CopyString(s);
+    //strrev(revs);
+    //FreeBlock(revs);
+
+
+	/*static string bitList;
 	string reverseBitList = "";
 	string zero = "0";
 	string one = "1";
@@ -64,6 +108,6 @@ string GrayCode(int num_bits){
 
 		Concat(bitList, reverseBitList);
 	}
-	return(bitList);
+	return(bitList);*/
 
 }

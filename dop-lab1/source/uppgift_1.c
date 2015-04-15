@@ -9,6 +9,7 @@
 
 #include "lib/simpio.h"
 #include "lib/genlib.h"
+#include "lib/strlib.h"
 
 //---------------------------------------------------------
 // CONSTANTS
@@ -39,6 +40,7 @@ void PrintGrayCode(int num_bits){
 	string bitList;
 	bitList = GrayCode(num_bits);
 	printf("%s", bitList);
+	system("pause");
 }
 
 string GrayCode(int num_bits){
@@ -50,18 +52,17 @@ string GrayCode(int num_bits){
 	if (num_bits == 1) bitList = "01";
 	else{
 		bitList = GrayCode(num_bits - 1);
-		/*strcpy(reverseBitList, bitList);
+		
+		reverseBitList = CopyString(bitList);
+		
 		strrev(reverseBitList);
 
-			strcat(zero, bitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
-			strcpy(bitList, zero);
-			strcat(one, reverseBitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
-			strcpy(reverseBitList, one);
+			Concat(zero, bitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
+			bitList = CopyString(zero);
+			Concat(one, reverseBitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
+			reverseBitList = (one);
 
-			misstänker allt detta går bättre med Roberts lib. ska titta på detta
-
-			*/
-		strcat(bitList, reverseBitList);
+		Concat(bitList, reverseBitList);
 	}
 	return(bitList);
 

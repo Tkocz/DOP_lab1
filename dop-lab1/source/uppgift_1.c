@@ -57,10 +57,10 @@ string GrayCode(int num_bits){
 		
 		strrev(reverseBitList);
 
-			Concat(zero, bitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
+			zero = Concat(zero, bitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
 			bitList = CopyString(zero);
-			Concat(one, reverseBitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
-			reverseBitList = (one);
+			one = Concat(one, reverseBitList); //ska eg. prependa en nolla till varje delbit, dvs var num_bit position
+			reverseBitList = CopyString(one);
 
 		Concat(bitList, reverseBitList);
 	}

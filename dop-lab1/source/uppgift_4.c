@@ -25,19 +25,25 @@ static pointT AdjacentPoint(pointT pt, directionT dir);
 // HÄR NEDANFÖR KOMMER VÅR ELAJT-KOD SOM LÖSER ALLA PROBLEM I HELA VÄRLDEN
 // -----------------------------------------------------------------------
 
-#define NoSolution 10000int ShortestPathLength(pointT pt) {    directionT dir;
+#define NoSolution 10000
 
-    if (OutsideMaze(pt)) return 1;
+int ShortestPathLength(pointT pt) {
+    directionT dir;
+
+    if (OutsideMaze(pt)) return 0;
     if (IsMarked(pt)) return NoSolution;
 
     MarkSquare(pt);
 
-    int n = SolveMaze(AdjacentPoint(pt, North));
-    int e = SolveMaze(AdjacentPoint(pt, East));
-    int s = SolveMaze(AdjacentPoint(pt, South));
-    int w = SolveMaze(AdjacentPoint(pt, West));
+    int n, e, s, w;
+    n = s = e = w = NoSolution;
 
-    int min = 9999999;
+    if (!WallExists(pt, North)) n = 1+ShortestPathLength(AdjacentPoint(pt, North));
+    if (!WallExists(pt, East))  e = 1+ShortestPathLength(AdjacentPoint(pt, East));
+    if (!WallExists(pt, South)) s = 1+ShortestPathLength(AdjacentPoint(pt, South));
+    if (!WallExists(pt, West))  w = 1+ShortestPathLength(AdjacentPoint(pt, West));
+
+    int min = NoSolution;
 
     if (n < min) min = n;
     if (e < min) min = e;
@@ -46,7 +52,9 @@ static pointT AdjacentPoint(pointT pt, directionT dir);
 
     UnmarkSquare(pt);
 
-    return 1 + min;}
+    return min;
+}
+
 
 // ELAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJT
 

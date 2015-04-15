@@ -19,14 +19,14 @@
 //---------------------------------------------------------
 
 /*--------------------------------------
- * Type: vertexT
+ * Type: Vertex
  *
  * Description:
  *   Representerar en punkt i bidimensionell rymd.
  *------------------------------------*/
 typedef struct {
     float x, y;
-} vertexT;
+} Vertex;
 
 //---------------------------------------------------------
 // CONSTANTS
@@ -75,7 +75,7 @@ static float g_anim = 0.0f;
  * Description:
  *   Ritar den givna triangeln.
  *------------------------------------*/
-static void DrawTri(vertexT v0, vertexT v1, vertexT v2) {
+static void DrawTri(Vertex v0, Vertex v1, Vertex v2) {
     // Vi börjar på punkt v0...
     MovePen(v0.x, v0.y);
 
@@ -103,7 +103,7 @@ static void DrawTri(vertexT v0, vertexT v1, vertexT v2) {
  * Description:
  *   Ritar den givna triangeln och delar upp den i fler, mindre trianglar.
  *------------------------------------*/
-static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
+static int SubdivTri(Vertex v0, Vertex v1, Vertex v2, int num_subdivs,
                      bool disp)
 {
 
@@ -117,7 +117,7 @@ static int SubdivTri(vertexT v0, vertexT v1, vertexT v2, int num_subdivs,
 
     // Vi har inte nått maxdjup än, så vi skapar fyra ännu mindre trianglar...
 
-    vertexT sv0, sv1, sv2;
+    Vertex sv0, sv1, sv2;
 
     /*
      * Vi skapar de tre nya punkterna sv0, sv1 och sv2 i triangeln enligt
@@ -267,7 +267,7 @@ void Uppgift3() {
     // Lite mer centrerad... Orkar inte räkna på saken, duger såhär. /Philip
     half_height *= 1.13f;
 
-    vertexT a, b, c;
+    Vertex a, b, c;
 
     /*
      * Här skapar vi den yttersta triangeln:

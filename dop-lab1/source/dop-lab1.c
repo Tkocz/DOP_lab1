@@ -22,7 +22,8 @@ extern Uppgift4();
 //---------------------------------------------------------
 
 main() {
-    printf("Select assignment (1 through 4, exit with 0)\n");
+    printf("S133686 (Philip Arvidsson) & S141564 (Martin Bergqvist)\n\n");
+	printf("Select assignment (1 through 4, exit with 0)\n");
 
     while (TRUE) {
         switch (GetInteger()) {

@@ -17,7 +17,7 @@
  * MazeFile -- Name of the file containing the maze
  */
 
-#define MazeFile "pathlen.maz"
+#define MazeFile "unmark.maz"
 
 /* Private function prototypes */
 
@@ -28,10 +28,13 @@ static pointT AdjacentPoint(pointT pt, directionT dir);
 
 void Uppgift4()
 {
-    string UsrMazeFile;
-    UsrMazeFile = GetLine();
+    printf("Enter the name of the maze file you want to use: ");
+    string maze_file = GetLine();
+
     InitGraphics();
-    ReadMazeMap(UsrMazeFile);
+
+    ReadMazeMap(maze_file);
+    FreeBlock(maze_file);
 
     /*if (SolveMaze(GetStartPosition())) {
         printf("The marked squares show a solution path.\n");
@@ -41,6 +44,9 @@ void Uppgift4()
 
     extern Uppgift4a();
            Uppgift4a();
+
+    system("pause");
+    ExitGraphics();
 }
 
 /*

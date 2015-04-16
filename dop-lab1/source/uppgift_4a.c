@@ -109,8 +109,6 @@ static int ShortestPathLength(pointT pt) {
  *------------------------------------*/
 void Uppgift4a() {
     printf("Uppgift 4a)\n\n");
-    printf("Finding shortest path to exit...\n");
-
     printf("Would you like to speed up the process (for complex mazes)? ");
     string s = GetLine();
 
@@ -118,6 +116,8 @@ void Uppgift4a() {
         SetPauseTime(0.0);
 
     FreeBlock(s);
+
+    printf("Finding shortest path to exit...\n");
 
     int num_steps = ShortestPathLength(GetStartPosition());
 

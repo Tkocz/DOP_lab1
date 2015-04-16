@@ -59,6 +59,9 @@
     <None Include="docs\Lab1_2015.pdf" />
     <None Include="pathlen.maz" />
     <None Include="unmark.maz" />
+    <None Include="build\post-build.bat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\uppgift_2.c">

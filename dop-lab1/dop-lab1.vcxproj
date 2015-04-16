@@ -67,6 +67,9 @@
       <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
+    <PostBuildEvent>
+      <Command>build\post-build.bat DEBUG</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -90,6 +93,9 @@
       <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
+    <PostBuildEvent>
+      <Command>build\post-build.bat RELEASE</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\dop-lab1.c" />
@@ -118,6 +124,7 @@
     <ClInclude Include="source\lib\strlib.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="build\post-build.bat" />
     <None Include="docs\Lab1_2015.pdf" />
     <None Include="example.maz" />
     <None Include="pathlen.maz" />

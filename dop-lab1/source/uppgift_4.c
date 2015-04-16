@@ -33,7 +33,7 @@ void Uppgift4()
     string maze_file = GetLine();
 
     InitGraphics();
-
+    
     ReadMazeMap(maze_file);
     FreeBlock(maze_file);
 

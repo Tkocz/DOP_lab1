@@ -1,6 +1,6 @@
 set BuildMode=%1
 
-set OutputDir=bin\
+set OutputDir=bin\%BuildMode%\
 
 call :CopyToOutputDir example.maz
 call :CopyToOutputDir pathlen.maz

@@ -17,7 +17,7 @@
  * MazeFile -- Name of the file containing the maze
  */
 
-#define MazeFile "unmark.maz"
+#define MazeFile "pathlen.maz"
 
 /* Private function prototypes */
 

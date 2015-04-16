@@ -6,6 +6,8 @@
 
 #include <stdio.h>
 #include "lib/genlib.h"
+#include "lib/simpio.h"
+#include "lib/strlib.h"
 #include "lib/graphics.h"
 #include "lib/mazelib.h"
 
@@ -62,8 +64,10 @@ int ShortestPathLength(pointT pt) {
 
 void Uppgift4()
 {
+	string UsrMazeFile;
+	UsrMazeFile = GetLine();
     InitGraphics();
-    ReadMazeMap(MazeFile);
+    ReadMazeMap(UsrMazeFile);
     /*if (SolveMaze(GetStartPosition())) {
         printf("The marked squares show a solution path.\n");
     } else {

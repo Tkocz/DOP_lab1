@@ -9,6 +9,7 @@
 #include "lib/simpio.h"
 #include "lib/strlib.h"
 #include "lib/graphics.h"
+#include "lib/extgraph.h"
 #include "lib/mazelib.h"
 
 /*

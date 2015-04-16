@@ -21,9 +21,16 @@ extern Uppgift4();
 // FUNCTIONS
 //---------------------------------------------------------
 
+/*--------------------------------------
+ * Function: main()
+ * Parameters:
+ *
+ * Description:
+ *   Programmets huvudfunktion.
+ *------------------------------------*/
 main() {
     printf("S133686 (Philip Arvidsson) & S141564 (Martin Bergqvist)\n\n");
-	printf("Select assignment (1 through 4, exit with 0)\n");
+    printf("Select assignment (1 through 4, exit with 0)\n");
 
     while (TRUE) {
         switch (GetInteger()) {
@@ -38,4 +45,6 @@ main() {
         case 0: return;
         }
     }
+
+    // -
 }

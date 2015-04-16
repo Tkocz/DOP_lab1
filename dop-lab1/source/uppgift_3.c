@@ -98,7 +98,7 @@ static void DrawTri(Vertex v0, Vertex v1, Vertex v2) {
  *             v2           Punkt tre.
  *             num_subdivs  Antal subdivideringar som ska utföras.
  *             disp         TRUE för att använda "displacement."
- * Returns:    Antalet uppritade trianglar.
+ * Returns: Antalet uppritade trianglar.
  *
  * Description:
  *   Ritar den givna triangeln och delar upp den i fler, mindre trianglar.

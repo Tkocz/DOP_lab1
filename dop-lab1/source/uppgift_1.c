@@ -21,25 +21,25 @@
  * Description:
  *   Genererar Gray-kod och skriver ut den.
  *------------------------------------*/
-void GenGrayCode(string code, int num_bits, bool reverse) {
+static void GenGrayCode(string code, int num_bits, bool reverse) {
     // Det algoritmiska basfallet skiljer sig något från det programmatiska, i
     // den bemärkelsen att det algoritmiska basfallet i själva verket är när
     // num_bits==1, medan det programmatiska (när vi bara har en operation kvar
-    // att utföra) är när num_bits==1, och vi skriver ut koden.
+    // att utföra) är när num_bits==0, och vi skriver ut koden.
     if (num_bits == 0) {
         printf("%s\n", code);
         return;
     }
 
-    // Vi genererar lite mer kod för de två olika utfallen genom att lägga på
-    // en nolla (ena fallet) och en etta (andra fallet).
+    // Vi genererar lite mer Gray-kod för de två olika utfallen genom att lägga
+    // på en nolla (ena fallet) och en etta (andra fallet).
     string str1 = Concat(code, "0");
     string str2 = Concat(code, "1");
 
     // Om reverse==TRUE så ska ordningen vändas bak-och-fram, så vi byter plats
     // på strängarna med varandra.
     if (reverse) {
-        string tmp = str1;
+        string tmp  = str1;
                str1 = str2;
                str2 = tmp;
     }
@@ -67,7 +67,7 @@ void GenGrayCode(string code, int num_bits, bool reverse) {
  * Description:
  *   Genererar Gray-kod och skriver ut den.
  *------------------------------------*/
-void PrintGrayCode(int num_bits){
+static void PrintGrayCode(int num_bits){
     GenGrayCode("", num_bits, FALSE);
 }
 
@@ -78,7 +78,7 @@ void PrintGrayCode(int num_bits){
  * Description:
  *   Huvudfunktionen för uppgift 1.
  *------------------------------------*/
-Uppgift1() {
+void Uppgift1() {
     printf("Enter the number of bits you wish to generate Graycode for\n");
 
     int num_bits = 0;

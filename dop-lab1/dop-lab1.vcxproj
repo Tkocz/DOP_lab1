@@ -41,9 +41,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>bin\$(Configuration)\tmp\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IntDir>bin\$(Configuration)\tmp\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -89,10 +93,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\dop-lab1.c" />
+    <ClCompile Include="source\uppgift_4a.c" />
+    <ClCompile Include="source\uppgift_4b.c" />
     <ClCompile Include="source\uppgift_1.c" />
     <ClCompile Include="source\uppgift_2.c" />
     <ClCompile Include="source\uppgift_3.c" />
     <ClCompile Include="source\uppgift_4.c" />
+    <ClCompile Include="source\uppgift_4c.c" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\GraphicsLib2010.lib" />

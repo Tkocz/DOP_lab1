@@ -17,67 +17,30 @@
  * MazeFile -- Name of the file containing the maze
  */
 
-#define MazeFile "example.maz"
+#define MazeFile "unmark.maz"
 
 /* Private function prototypes */
 
 static bool SolveMaze(pointT pt);
 static pointT AdjacentPoint(pointT pt, directionT dir);
 
-// HÄR NEDANFÖR KOMMER VÅR ELAJT-KOD SOM LÖSER ALLA PROBLEM I HELA VÄRLDEN
-// -----------------------------------------------------------------------
-
-#define NoSolution 10000
-
-int ShortestPathLength(pointT pt) {
-    directionT dir;
-
-    if (OutsideMaze(pt)) return 0;
-    if (IsMarked(pt)) return NoSolution;
-
-    MarkSquare(pt);
-
-    int n, e, s, w;
-    n = s = e = w = NoSolution;
-
-    if (!WallExists(pt, North)) n = 1+ShortestPathLength(AdjacentPoint(pt, North));
-    if (!WallExists(pt, East))  e = 1+ShortestPathLength(AdjacentPoint(pt, East));
-    if (!WallExists(pt, South)) s = 1+ShortestPathLength(AdjacentPoint(pt, South));
-    if (!WallExists(pt, West))  w = 1+ShortestPathLength(AdjacentPoint(pt, West));
-
-    int min = NoSolution;
-
-    if (n < min) min = n;
-    if (e < min) min = e;
-    if (s < min) min = s;
-    if (w < min) min = w;
-
-    UnmarkSquare(pt);
-
-    return min;
-}
-
-
-// ELAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJT
-
 /* Main program */
 
 void Uppgift4()
 {
-	string UsrMazeFile;
-	UsrMazeFile = GetLine();
+    string UsrMazeFile;
+    UsrMazeFile = GetLine();
     InitGraphics();
     ReadMazeMap(UsrMazeFile);
+
     /*if (SolveMaze(GetStartPosition())) {
         printf("The marked squares show a solution path.\n");
     } else {
         printf("No solution exists.\n");
     }*/
 
-    ////////// ELAJT STUDENTKOD
-    printf("%d\n", ShortestPathLength(GetStartPosition()));
-    //////////////////////
-
+    extern Uppgift4a();
+           Uppgift4a();
 }
 
 /*
@@ -132,4 +95,3 @@ static pointT AdjacentPoint(pointT pt, directionT dir)
     }
     return (newpt);
 }
-

@@ -76,5 +76,14 @@
     <ClCompile Include="source\uppgift_1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\uppgift_4a.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\uppgift_4b.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\uppgift_4c.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

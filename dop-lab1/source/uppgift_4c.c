@@ -43,8 +43,6 @@
  *   Returnerar längden (i antal steg) på en väg ut ur labyrinten.
  *------------------------------------*/
 static int FindPath(pointT pt, pointT path[], int max_path_size) {
-    directionT dir;
-
     // Om det inte finns plats att lagra mer data i vektorn så får vi helt
     // enkelt acceptera att vi inte kan lösa labyrinten denna vägen.
     if (max_path_size <= 0)
@@ -65,12 +63,12 @@ static int FindPath(pointT pt, pointT path[], int max_path_size) {
     // Markera rutan som besökt.
     MarkSquare(pt);
 
-    for (dir = North; dir <= West; dir++) {
+    for (directionT dir = North; dir <= West; dir++) {
         // Om det är en vägg ivägen går vi vidare till nästa riktning.
         if (WallExists(pt, dir))
             continue;
 
-        // Om length==NO_SOLUTION innebär att ingen lösning finns genom den
+        // Om length==NO_SOLUTION innebär det att ingen lösning finns genom den
         // riktningen som dir pekar åt. Då går vi vidare och provar nästa.
         //     När vi anropar FindPath ökar vi path-pekaren med ett, och minskar
         // max_path_size med ett. Detta gör att de rekursiva anropen får en
@@ -134,7 +132,7 @@ static void PrintDirections(pointT path[], int length) {
         // Det är ok att använda == för att jämföra strängarna här eftersom de
         // garanterat pekar till samma minnesadresser om de är ekvivalenta. Vi
         // testar dessutom för i==1 eftersom vi alltid vill räkna upp den första
-        // riktningen vi går it, inte skriva ut den.
+        // riktningen vi går åt, inte skriva ut den.
         if (i == 1 || dir == last_dir) {
             count++;
         }
@@ -164,11 +162,15 @@ static void PrintDirections(pointT path[], int length) {
 void Uppgift4c() {
     pointT path[MAX_PATH];
 
+    printf("Uppgift 4c)\n\n");
+
     int length = FindPath(GetStartPosition(), path, MAX_PATH);
     if (length == 0)
         printf("No solution exists.\n");
     else
         PrintDirections(path, length);
+
+    printf("-------------------\n\n");
 
     system("pause");
     ExitGraphics();

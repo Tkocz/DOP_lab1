@@ -1,22 +1,27 @@
+//---------------------------------------------------------
+// INCLUDES
+//---------------------------------------------------------
+
 #include "lib/extgraph.h"
 #include "lib/genlib.h"
 #include "lib/mazelib.h"
 
-static bool SolveMaze(pointT pt, int* num_calls, bool unmark)
-{
-    directionT dir;
+//---------------------------------------------------------
+// FUNCTIONS
+//---------------------------------------------------------
 
+static bool SolveMaze(pointT pt, int* num_calls, bool unmark) {
     ++(*num_calls);
 
     if (OutsideMaze(pt))
-        return (TRUE);
+        return TRUE;
 
     if (IsMarked(pt))
-        return (FALSE);
+        return FALSE;
 
     MarkSquare(pt);
 
-    for (dir = North; dir <= West; dir++) {
+    for (directionT dir = North; dir <= West; dir++) {
         // Om det är en vägg ivägen går vi vidare till nästa riktning.
         if (WallExists(pt, dir))
             continue;
@@ -27,17 +32,23 @@ static bool SolveMaze(pointT pt, int* num_calls, bool unmark)
             if (unmark)
                 UnmarkSquare(pt);
 
-            return (TRUE);
+            return TRUE;
         }
     }
 
     if (unmark)
         UnmarkSquare(pt);
 
-    return (FALSE);
+    return FALSE;
 }
 
-
+/*--------------------------------------
+ * Function: Uppgift4b()
+ * Parameters:
+ *
+ * Description:
+ *   Löser uppgift 4b.
+ *------------------------------------*/
 void Uppgift4b() {
     int num_calls           = 0;
     int num_calls_no_unmark = 0;
@@ -49,7 +60,7 @@ void Uppgift4b() {
     SolveMaze(start_pos, &num_calls          , TRUE);
     SolveMaze(start_pos, &num_calls_no_unmark, FALSE);
 
-    printf("Uppgift 4a)\n\n");
+    printf("Uppgift 4b)\n\n");
 
     // Det första anropet är inte rekursivt (se labbspec), varför vi subtraherar
     // ett från variablerna.

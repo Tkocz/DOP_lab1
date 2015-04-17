@@ -24,7 +24,7 @@ extern Uppgift4c();
  * MazeFile -- Name of the file containing the maze
  */
 
-#define MazeFile "unmark.maz"
+//#define MazeFile "unmark.maz"
 
 /* Private function prototypes */
 

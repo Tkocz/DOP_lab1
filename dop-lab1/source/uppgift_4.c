@@ -4,13 +4,19 @@
  * This program solves a maze by recursive backtracking.
  */
 
+#include <ctype.h>
 #include <stdio.h>
+
 #include "lib/genlib.h"
 #include "lib/simpio.h"
 #include "lib/strlib.h"
 #include "lib/graphics.h"
 #include "lib/extgraph.h"
 #include "lib/mazelib.h"
+
+extern Uppgift4a();
+extern Uppgift4b();
+extern Uppgift4c();
 
 /*
  * Constants
@@ -43,8 +49,24 @@ void Uppgift4()
         printf("No solution exists.\n");
     }*/
 
-    extern Uppgift4a();
-           Uppgift4a();
+    printf("Select assignment (a, b or c, exit with q)\n");
+
+    while (TRUE) {
+        string s = GetLine();
+        char   c = toupper(s[0]);
+        FreeBlock(s);
+
+        switch (c) {
+
+        case 'A': Uppgift4a(); return;
+        case 'B': Uppgift4b(); return;
+        case 'C': Uppgift4c(); return;
+
+        default: printf("Invalid choice. Try again.\n"); break;
+
+        case 'Q': return;
+        }
+    }
 
     system("pause");
     ExitGraphics();

@@ -45,6 +45,11 @@
 static int FindPath(pointT pt, pointT path[], int max_path_size) {
     directionT dir;
 
+    // Om det inte finns plats att lagra mer data i vektorn så får vi helt
+    // enkelt acceptera att vi inte kan lösa labyrinten denna vägen.
+    if (max_path_size <= 0)
+        return NO_SOLUTION;
+
     // Om vi är utanför labyrinten har vi hittat en lösning. Vi sparar den
     // punkten som en lösning, så att vi får med steget ut ur labyrinten som
     // en del av lösningen.

@@ -121,6 +121,9 @@ void Uppgift4a() {
 
     int num_steps = ShortestPathLength(GetStartPosition());
 
-    printf("Shortest path is %d steps.\n", num_steps);
+    if (num_steps == NO_SOLUTION)
+        printf("No solution exists.\n");
+    else
+        printf("Shortest path is %d steps.\n", num_steps);
     printf("-------------------\n\n");
 }

@@ -29,6 +29,10 @@ extern Uppgift4();
  *   Programmets huvudfunktion.
  *------------------------------------*/
 main() {
+    // Vi har valt at INTE dela upp VS-lösningen i flera olika projekt, utan
+    // istället implementerat ett menysystem där användaren får välja den
+    // uppgift vars lösning ska granskas.
+
     printf("S133686 (Philip Arvidsson) & S141564 (Martin Bergqvist)\n\n");
     printf("Select assignment (1 through 4, exit with 0)\n");
 

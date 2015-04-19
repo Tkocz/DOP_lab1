@@ -28,8 +28,8 @@ extern Uppgift4c();
 
 /* Private function prototypes */
 
-static bool SolveMaze(pointT pt);
-static pointT AdjacentPoint(pointT pt, directionT dir);
+//static bool SolveMaze(pointT pt);
+//static pointT AdjacentPoint(pointT pt, directionT dir);
 
 /* Main program */
 
@@ -68,8 +68,7 @@ void Uppgift4()
         }
     }
 
-    system("pause");
-    ExitGraphics();
+    // Hit kommer vi aldrig.
 }
 
 /*
@@ -83,7 +82,7 @@ void Uppgift4()
  * current square and moving one step along each open passage.
  */
 
-static bool SolveMaze(pointT pt)
+/*static bool SolveMaze(pointT pt)
 {
     directionT dir;
 
@@ -99,7 +98,7 @@ static bool SolveMaze(pointT pt)
     }
     UnmarkSquare(pt);
     return (FALSE);
-}
+}*/
 
 /*
  * Function: AdjacentPoint
@@ -111,7 +110,7 @@ static bool SolveMaze(pointT pt)
  * would return the point (2,1).
  */
 
-static pointT AdjacentPoint(pointT pt, directionT dir)
+/*static pointT AdjacentPoint(pointT pt, directionT dir)
 {
     pointT newpt;
 
@@ -123,4 +122,4 @@ static pointT AdjacentPoint(pointT pt, directionT dir)
       case West:  newpt.x--; break;;
     }
     return (newpt);
-}
+}*/

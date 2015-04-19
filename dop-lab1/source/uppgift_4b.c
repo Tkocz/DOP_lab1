@@ -10,6 +10,16 @@
 // FUNCTIONS
 //---------------------------------------------------------
 
+/*--------------------------------------
+ * Function: SolveMaze()
+ * Parameters: pt         Den punkt utifrån vilken vi vill lösa labyrinten.
+ *             num_calls  Räknare för antal anrop.
+ *             unmark     Indikerar huruvida UnmarkSquare()-funktionen ska
+ *                        anropas.
+ *
+ * Description:
+ *   Löser labyrinten (om möjligt) och räknar antalet anrop.
+ *------------------------------------*/
 static bool SolveMaze(pointT pt, int* num_calls, bool unmark) {
     ++(*num_calls);
 

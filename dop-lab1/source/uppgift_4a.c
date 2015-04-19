@@ -109,7 +109,7 @@ static int ShortestPathLength(pointT pt) {
  *------------------------------------*/
 void Uppgift4a() {
     printf("Uppgift 4a)\n\n");
-    printf("Would you like to speed up the process (for complex mazes)? ");
+    printf("Would you like to speed up the process (for complex mazes)? (y/N)");
     string s = GetLine();
 
     if (s[0]=='Y' || s[0]=='y')
